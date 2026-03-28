@@ -8,6 +8,7 @@ export default async function AuthPage() {
   const session = await authClient.getSession({
     fetchOptions: {
       headers: await headers(),
+      credentials: "include",
     },
   });
 
