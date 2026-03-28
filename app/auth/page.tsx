@@ -3,6 +3,7 @@ import { authClient } from "@/app/_lib/auth-client";
 import { headers } from "next/headers";
 import { StarsBackground } from "@/components/animate-ui/components/backgrounds/stars";
 import { AuthFormCard } from "./_components/auth-form-card";
+import Image from "next/image";
 
 export default async function AuthPage() {
   const session = await authClient.getSession({
@@ -15,13 +16,15 @@ export default async function AuthPage() {
   if (session.data?.user) redirect("/home");
 
   return (
-    <StarsBackground className="relative flex min-h-svh flex-col">
+    <StarsBackground className="relative flex min-h-svh flex-col items-center">
       <div className="flex-1" />
 
-      <div className="relative z-10 flex flex-col items-center gap-15 rounded-t-4xl px-5 pb-10 pt-12">
+      <Image src={"/orion.png"} alt="Órion" width={300} height={300} />
+
+      <div className="relative z-10 flex flex-col items-center gap-15 rounded-t-4xl px-5 pb-10 ">
         <div className="flex w-full flex-col items-center gap-6">
           <h1 className="w-full text-center font-heading text-[32px] font-semibold leading-[1.05] text-primary-foreground">
-            Bem vindo ao site do Ministério Jovem Órion!
+            Ministério Jovem Órion!
           </h1>
           <AuthFormCard />
         </div>
